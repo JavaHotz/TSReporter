@@ -9,14 +9,14 @@ import java.awt.event.*;
 
 public abstract class JPasswordUI extends JFrame
 {
-	protected JLabel Jlb_ID = new JLabel("帳號");
-	protected JLabel Jlb_PW = new JLabel("密碼");
+	protected JLabel Jlb_ID = new JLabel("帳號：");
+	protected JLabel Jlb_PW = new JLabel("密碼：");
 	protected String key = "1535879468"; //加解密的key
 	protected JAes aes = new JAes(); //aes加解密
 	private JPasswordField jpw = new JPasswordField(8);
-	private JTextField jid = new JTextField();
-	private JButton Jbtn_YES = new JButton("Ok");
-	private JButton Jbtn_NO = new JButton("Clean");
+	private JTextField jid = new JTextField(10);
+	private JButton Jbtn_YES = new JButton("    Ok    ");
+	private JButton Jbtn_NO = new JButton("   Clean   ");
 	private ButtonHandler hbtHandler = new ButtonHandler();  //處理按鈕事件 
 
 	public JPasswordUI()
@@ -35,57 +35,61 @@ public abstract class JPasswordUI extends JFrame
 		bag1.weightx = 0;
 		bag1.weighty = 0;
 		bag1.fill = GridBagConstraints.NONE;
-		bag1.anchor = GridBagConstraints.WEST;
+		bag1.anchor = GridBagConstraints.NORTHWEST;
 		 
 		GridBagConstraints bag2 = new GridBagConstraints();
-		bag2.gridx = 1;
+		bag2.gridx = 3;
 		bag2.gridy = 0;
 		bag2.gridwidth = 2;
 		bag2.gridheight = 1;
 		bag2.weightx = 0;
 		bag2.weighty = 0;
 		bag2.fill = GridBagConstraints.NONE;
-		bag2.anchor = GridBagConstraints.WEST;
+		bag2.anchor = GridBagConstraints.NORTHWEST;
 		 
 		GridBagConstraints bag3 = new GridBagConstraints();
 		bag3.gridx = 0;
-		bag3.gridy = 1;
+		bag3.gridy = 2;
 		bag3.gridwidth = 2;
 		bag3.gridheight = 1;
 		bag3.weightx = 0;
 		bag3.weighty = 0;
-		bag3.fill = GridBagConstraints.BOTH;
-		bag3.anchor = GridBagConstraints.WEST;
+		bag3.insets = new Insets(5,0,0,0);
+		bag3.fill = GridBagConstraints.NONE;
+		bag3.anchor = GridBagConstraints.NORTHWEST;
 		
 		GridBagConstraints bag4 = new GridBagConstraints();
-		bag4.gridx = 1;
-		bag4.gridy = 1;
+		bag4.gridx = 3;
+		bag4.gridy = 2;
 		bag4.gridwidth = 2;
 		bag4.gridheight = 1;
 		bag4.weightx = 0;
 		bag4.weighty = 0;
+		bag4.insets = new Insets(5,0,0,0);
 		bag4.fill = GridBagConstraints.BOTH;
-		bag4.anchor = GridBagConstraints.WEST;
+		bag4.anchor = GridBagConstraints.NORTHWEST;
 		
 		GridBagConstraints bag5 = new GridBagConstraints();
-		bag5.gridx = 0;
-		bag5.gridy = 2;
-		bag5.gridwidth = 2;
+		bag5.gridx = 1;
+		bag5.gridy = 3;
+		bag5.gridwidth = 4;
 		bag5.gridheight = 1;
 		bag5.weightx = 0;
 		bag5.weighty = 0;
-		bag5.fill = GridBagConstraints.BOTH;
-		bag5.anchor = GridBagConstraints.WEST;
+		bag5.insets= new Insets(15,0,0,0);
+		bag5.fill = GridBagConstraints.NONE;
+		bag5.anchor = GridBagConstraints.LAST_LINE_START;
 		
 		GridBagConstraints bag6 = new GridBagConstraints();
-		bag6.gridx = 2;
-		bag6.gridy = 2;
-		bag6.gridwidth = 2;
+		bag6.gridx = 3;
+		bag6.gridy = 3;
+		bag6.gridwidth = 4;
 		bag6.gridheight = 1;
 		bag6.weightx = 0;
 		bag6.weighty = 0;
-		bag6.fill = GridBagConstraints.BOTH;
-		bag6.anchor = GridBagConstraints.WEST;
+		bag6.insets= new Insets(15,0,0,0);
+		bag6.fill = GridBagConstraints.NONE;
+		bag6.anchor = GridBagConstraints.LAST_LINE_END;
 		
 		//設定Jlb_ID大小位置及顯示字型
 		Jlb_ID.setLocation(20,10);
@@ -110,29 +114,28 @@ public abstract class JPasswordUI extends JFrame
 		jpw.setSize(200,40);
 		jpw.setFont(new Font("Serif",Font.BOLD,24));
 		jpw.setEchoChar('●');
-		jpw.setToolTipText("密碼長度8個字元");
+		jpw.setToolTipText("密碼");
 		c.add(jpw, bag4);
 		
 		jpw.addActionListener(hbtHandler);
 				
 		//設定確定按鈕大小位置及顯示字型
 		Jbtn_YES.setLocation(10,270);
-		Jbtn_YES.setSize(160,40);
+		Jbtn_YES.setSize(200,40);
 		Jbtn_YES.addActionListener(hbtHandler);
 		Jbtn_YES.setFont(new Font("Serif", Font.PLAIN, 24));
 		c.add(Jbtn_YES, bag5);
-		
 		//設定清除按鈕大小位置及顯示字型
 		Jbtn_NO.setLocation(350,270);
-		Jbtn_NO.setSize(160,40);
+		Jbtn_NO.setSize(200,40);
 		Jbtn_NO.addActionListener(hbtHandler);
 		Jbtn_NO.setFont(new Font("Serif", Font.PLAIN, 24));
 		c.add(Jbtn_NO, bag6);
 		
 		
 		//設定視窗
-		setSize(600,400);
-		setLocation(300,200); 
+		setSize(400,300);
+		setLocation(600,200); 
  		setResizable(false);//視窗放大按鈕無效 
  		setVisible(true);
  		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
