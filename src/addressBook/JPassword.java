@@ -20,7 +20,7 @@ public class JPassword extends JPasswordUI
 		pw = new String(this.getPW());
 		props = new Properties();
 		try {
-		props.load(new FileInputStream("init.txt")); //讀取設定檔
+		props.load(new FileInputStream("src/init.txt")); //讀取設定檔
         } catch (IOException ioe) {
 		JOptionPane.showMessageDialog(null, ioe.toString(),
                     		"開啟 init.txt 錯誤!", JOptionPane.ERROR_MESSAGE);
