@@ -1,5 +1,5 @@
-//¦WºÙ¡G³q°T¿ı±K½X¿é¤J¤¶­±
-//³]­p®v¡G¦N¥L¤â
+//åç¨±ï¼šé€šè¨ŠéŒ„å¯†ç¢¼è¼¸å…¥ä»‹é¢
+//è¨­è¨ˆå¸«ï¼šå‰ä»–æ‰‹
 
 package addressBook;
 
@@ -9,19 +9,19 @@ import java.awt.event.*;
 
 public abstract class JPasswordUI extends JFrame
 {
-	protected JLabel Jlb_ID = new JLabel("±b¸¹¡G");
-	protected JLabel Jlb_PW = new JLabel("±K½X¡G");
-	protected String key = "1535879468"; //¥[¸Ñ±Kªºkey
-	protected JAes aes = new JAes(); //aes¥[¸Ñ±K
+	protected JLabel Jlb_ID = new JLabel("å¸³è™Ÿï¼š");
+	protected JLabel Jlb_PW = new JLabel("å¯†ç¢¼ï¼š");
+	protected String key = "1535879468"; //åŠ è§£å¯†çš„key
+	protected JAes aes = new JAes(); //aesåŠ è§£å¯†
 	private JPasswordField jpw = new JPasswordField(8);
 	private JTextField jid = new JTextField(10);
 	private JButton Jbtn_YES = new JButton("    Ok    ");
 	private JButton Jbtn_NO = new JButton("   Clean   ");
-	private ButtonHandler hbtHandler = new ButtonHandler();  //³B²z«ö¶s¨Æ¥ó 
+	private ButtonHandler hbtHandler = new ButtonHandler();  //è™•ç†æŒ‰éˆ•äº‹ä»¶ 
 
 	public JPasswordUI()
 	{
-		super("¿é¤J±b¸¹±K½X"); 
+		super("è¼¸å…¥å¸³è™Ÿå¯†ç¢¼"); 
 		Container c = getContentPane(); 
 		c.setLayout(null);
 		
@@ -91,41 +91,41 @@ public abstract class JPasswordUI extends JFrame
 		bag6.fill = GridBagConstraints.NONE;
 		bag6.anchor = GridBagConstraints.LAST_LINE_END;
 		
-		//³]©wJlb_ID¤j¤p¦ì¸m¤ÎÅã¥Ü¦r«¬
+		//è¨­å®šJlb_IDå¤§å°ä½ç½®åŠé¡¯ç¤ºå­—å‹
 		Jlb_ID.setLocation(20,10);
 		Jlb_ID.setSize(100,40);
 		Jlb_ID.setFont(new Font("Serif",Font.BOLD,24));
 		c.add(Jlb_ID, bag1);
 		
-		//³]©w±b¸¹¿é¤J®Ø¤j¤p¦ì¸m¤ÎÅã¥Ü¦r«¬
+		//è¨­å®šå¸³è™Ÿè¼¸å…¥æ¡†å¤§å°ä½ç½®åŠé¡¯ç¤ºå­—å‹
 		jid.setLocation(70,10);
 		jid.setSize(200,40);
 		jid.setFont(new Font("Serif",Font.BOLD,24));
 		c.add(jid, bag2);
 		
-		//³]©wJlb_PW¤j¤p¦ì¸m¤ÎÅã¥Ü¦r«¬
+		//è¨­å®šJlb_PWå¤§å°ä½ç½®åŠé¡¯ç¤ºå­—å‹
 		Jlb_PW.setLocation(20,50);
 		Jlb_PW.setSize(100,40);
 		Jlb_PW.setFont(new Font("Serif",Font.BOLD,24));
 		c.add(Jlb_PW, bag3);
 		
-		//³]©w±K½X¿é¤J®Ø¤j¤p¦ì¸m¤ÎÅã¥Ü¦r«¬
+		//è¨­å®šå¯†ç¢¼è¼¸å…¥æ¡†å¤§å°ä½ç½®åŠé¡¯ç¤ºå­—å‹
 		jpw.setLocation(70,50);
 		jpw.setSize(200,40);
 		jpw.setFont(new Font("Serif",Font.BOLD,24));
-		jpw.setEchoChar('¡´');
-		jpw.setToolTipText("±K½X");
+		jpw.setEchoChar('â—');
+		jpw.setToolTipText("å¯†ç¢¼");
 		c.add(jpw, bag4);
 		
 		jpw.addActionListener(hbtHandler);
 				
-		//³]©w½T©w«ö¶s¤j¤p¦ì¸m¤ÎÅã¥Ü¦r«¬
+		//è¨­å®šç¢ºå®šæŒ‰éˆ•å¤§å°ä½ç½®åŠé¡¯ç¤ºå­—å‹
 		Jbtn_YES.setLocation(10,270);
 		Jbtn_YES.setSize(200,40);
 		Jbtn_YES.addActionListener(hbtHandler);
 		Jbtn_YES.setFont(new Font("Serif", Font.PLAIN, 24));
 		c.add(Jbtn_YES, bag5);
-		//³]©w²M°£«ö¶s¤j¤p¦ì¸m¤ÎÅã¥Ü¦r«¬
+		//è¨­å®šæ¸…é™¤æŒ‰éˆ•å¤§å°ä½ç½®åŠé¡¯ç¤ºå­—å‹
 		Jbtn_NO.setLocation(350,270);
 		Jbtn_NO.setSize(200,40);
 		Jbtn_NO.addActionListener(hbtHandler);
@@ -133,10 +133,10 @@ public abstract class JPasswordUI extends JFrame
 		c.add(Jbtn_NO, bag6);
 		
 		
-		//³]©wµøµ¡
+		//è¨­å®šè¦–çª—
 		setSize(400,300);
 		setLocation(600,200); 
- 		setResizable(false);//µøµ¡©ñ¤j«ö¶sµL®Ä 
+ 		setResizable(false);//è¦–çª—æ”¾å¤§æŒ‰éˆ•ç„¡æ•ˆ 
  		setVisible(true);
  		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	} 
@@ -155,13 +155,13 @@ public abstract class JPasswordUI extends JFrame
 		}
 	}
 	
-	//¦^¶Ç±b¸¹¦r¦ê
+	//å›å‚³å¸³è™Ÿå­—ä¸²
 	public String getID()
 	{
 		return jid.getText();
 	}
 	
-	//¦^¶Ç±K½X¦r¤¸°}¦C
+	//å›å‚³å¯†ç¢¼å­—å…ƒé™£åˆ—
 	public char [] getPW()
 	{
 		return jpw.getPassword();

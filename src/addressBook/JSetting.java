@@ -1,5 +1,5 @@
-//¦WºÙ¡G³q°T¿ı³]©w·s±b¸¹»P±K½X¤¶­±
-//³]­p®v¡G¦N¥L¤â
+//åç¨±ï¼šé€šè¨ŠéŒ„è¨­å®šæ–°å¸³è™Ÿèˆ‡å¯†ç¢¼ä»‹é¢
+//è¨­è¨ˆå¸«ï¼šå‰ä»–æ‰‹
 
 package addressBook;
 
@@ -10,28 +10,28 @@ import java.awt.event.*;
 
 public class JSetting extends JPasswordUI
 {
-	private String id,pw; //¨ú±o±b¸¹±K½X¦r¦ê
-	private Properties props; //¥Î¨ÓÅª¨útxt¸Ìªº±b±K­È
+	private String id,pw; //å–å¾—å¸³è™Ÿå¯†ç¢¼å­—ä¸²
+	private Properties props; //ç”¨ä¾†è®€å–txtè£¡çš„å¸³å¯†å€¼
 	
 	public JSetting()
 	{
-		this.setTitle("­×§ï±b±K");
-		Jlb_ID.setText("·s±b¸¹");
+		this.setTitle("ä¿®æ”¹å¸³å¯†");
+		Jlb_ID.setText("æ–°å¸³è™Ÿ");
 		Jlb_ID.setSize(60,20);
 		Jlb_ID.setLocation(10,10);
-		Jlb_PW.setText("·s±K½X");
+		Jlb_PW.setText("æ–°å¯†ç¢¼");
 		Jlb_PW.setSize(60,20);
 		Jlb_PW.setLocation(10,50);
 
 		props = new Properties();
 		
-		//³]©wµøµ¡
+		//è¨­å®šè¦–çª—
 		setSize(200,150);
 		setLocation(300,200); 
- 		setResizable(false);//µøµ¡©ñ¤j«ö¶sµL®Ä 
+ 		setResizable(false);//è¦–çª—æ”¾å¤§æŒ‰éˆ•ç„¡æ•ˆ 
  		setVisible(true);
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
- 		//«ö¤Uµøµ¡Ãö³¬¶s¨Æ¥ó³B²z
+ 		//æŒ‰ä¸‹è¦–çª—é—œé–‰éˆ•äº‹ä»¶è™•ç†
                 addWindowListener(
                     new WindowAdapter() {
                         public void windowClosing(WindowEvent e) { 
@@ -52,43 +52,43 @@ public class JSetting extends JPasswordUI
 		if(pw.length() > 8)
 		{
 	    		JOptionPane.showMessageDialog(null,
-	    			"±K½Xªø«×¶W¹L8­Ó¦r¤¸","°T®§",JOptionPane.INFORMATION_MESSAGE);
+	    			"å¯†ç¢¼é•·åº¦è¶…é8å€‹å­—å…ƒ","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);
 	    		return;
 		}
 		
 		if(id.isEmpty() || pw.isEmpty())
 		{
 	    		JOptionPane.showMessageDialog(null,
-	    			"±b¸¹©Î±K½X¤£±oªÅ¥Õ","°T®§",JOptionPane.INFORMATION_MESSAGE);
+	    			"å¸³è™Ÿæˆ–å¯†ç¢¼ä¸å¾—ç©ºç™½","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);
 	    		return;
 		}
 
     		JOptionPane.showMessageDialog(null,
-    		"·s±b¸¹ : " + id + "\n·s±K½X : " + pw + "\n½Ğ¨c°O!",
-		"·s±b¸¹±K½X³]©w§¹¦¨",JOptionPane.INFORMATION_MESSAGE);
-		id = aes.getencrypt(key,id); //±N±b¸¹¥Îaes¥[±K
-		pw = aes.getencrypt(key,pw); //±N±K½X¥Îaes¥[±K
-		props.setProperty("bookID", id); //³]©w·s±b¸¹
-		props.setProperty("bookPW", pw); //³]©w·s±K½X
+    		"æ–°å¸³è™Ÿ : " + id + "\næ–°å¯†ç¢¼ : " + pw + "\nè«‹ç‰¢è¨˜!",
+		"æ–°å¸³è™Ÿå¯†ç¢¼è¨­å®šå®Œæˆ",JOptionPane.INFORMATION_MESSAGE);
+		id = aes.getencrypt(key,id); //å°‡å¸³è™Ÿç”¨aesåŠ å¯†
+		pw = aes.getencrypt(key,pw); //å°‡å¯†ç¢¼ç”¨aesåŠ å¯†
+		props.setProperty("bookID", id); //è¨­å®šæ–°å¸³è™Ÿ
+		props.setProperty("bookPW", pw); //è¨­å®šæ–°å¯†ç¢¼
 		try {
-			props.store(new FileWriter("init.txt"), "bookID");//¼g¤J·s±b¸¹
-			props.store(new FileWriter("init.txt"), "bookPW");//¼g¤J·s±K½X
+			props.store(new FileWriter("init.txt"), "bookID");//å¯«å…¥æ–°å¸³è™Ÿ
+			props.store(new FileWriter("init.txt"), "bookPW");//å¯«å…¥æ–°å¯†ç¢¼
 		} catch (IOException ioe) {
 			JOptionPane.showMessageDialog(null, ioe.toString(),
-                    	"¶}±Ò init.txt ¿ù»~!", JOptionPane.ERROR_MESSAGE);
+                    	"é–‹å•Ÿ init.txt éŒ¯èª¤!", JOptionPane.ERROR_MESSAGE);
         	}
 
 		cleanID_PW();
 		setVisible(false);
 	}
 
-	//³]©w¬O§_Åã¥Ü­×§ï±b±Kµøµ¡
+	//è¨­å®šæ˜¯å¦é¡¯ç¤ºä¿®æ”¹å¸³å¯†è¦–çª—
 	public void setJSetShow(boolean b)
 	{
 		setVisible(b);
 	}
 
-	//ÀË¬d¦r¤¸¬O§_¬°¼Æ¦r©Î¦r¥À¡BªÅ¥Õ
+	//æª¢æŸ¥å­—å…ƒæ˜¯å¦ç‚ºæ•¸å­—æˆ–å­—æ¯ã€ç©ºç™½
 	private boolean checkIsLetterOrDigit(char [] ld)
 	{
 		for(int i = 0; i < ld.length; i++)
@@ -96,13 +96,13 @@ public class JSetting extends JPasswordUI
 			if(!Character.isLetterOrDigit(ld[i]))
 			{
 				JOptionPane.showMessageDialog(null,
-				"±b¸¹±K½X¥²¶·¬°¦r¥À©Î¼Æ¦r!!","°T®§",JOptionPane.INFORMATION_MESSAGE);
+				"å¸³è™Ÿå¯†ç¢¼å¿…é ˆç‚ºå­—æ¯æˆ–æ•¸å­—!!","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);
 				return false;
 			}
 			if(Character.isSpaceChar(ld[i]))
 			{
 				JOptionPane.showMessageDialog(null,
-				"±b¸¹±K½X¤£¯à§t¦³ªÅ¥Õ¦r¤¸!!","°T®§",JOptionPane.INFORMATION_MESSAGE);
+				"å¸³è™Ÿå¯†ç¢¼ä¸èƒ½å«æœ‰ç©ºç™½å­—å…ƒ!!","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);
 				return false;
 			}
 		}

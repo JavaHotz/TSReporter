@@ -1,6 +1,6 @@
-//¦WºÙ¡G³q°T¿ı
-//³]­p®v¡G¦N¥L¤â
-//¤é´Á¡G2008/07/24
+//åç¨±ï¼šé€šè¨ŠéŒ„
+//è¨­è¨ˆå¸«ï¼šå‰ä»–æ‰‹
+//æ—¥æœŸï¼š2008/07/24
 
 package addressBook;
 import java.io.*;
@@ -11,34 +11,34 @@ import java.util.Arrays;
 public class JAddressBook extends JAddressBookUI
 {
 	private JFileChooser fc;
-	private JSetting js; //­×§ï±b±K
+	private JSetting js; //ä¿®æ”¹å¸³å¯†
 
 	public JAddressBook()
 	{
-		//«Ø¥ßÀÉ®×¹LÂo¾¹
+		//å»ºç«‹æª”æ¡ˆéæ¿¾å™¨
         fc = new JFileChooser();
         fc.addChoosableFileFilter(new DbFileFilter());
 	}
 	
-	//Àx¦s
+	//å„²å­˜
     protected void saveBook() 
     {
     	int op = JOptionPane.showConfirmDialog(null, 
-				"½T©wÀx¦s³q°T¿ı?", "°T®§", JOptionPane.YES_NO_OPTION);
+				"ç¢ºå®šå„²å­˜é€šè¨ŠéŒ„?", "è¨Šæ¯", JOptionPane.YES_NO_OPTION);
 		if(op == JOptionPane.NO_OPTION)
 			return;
 		
-    	//«Ø¥ß¼g¤JÀÉ®×ªºª«¥ó
+    	//å»ºç«‹å¯«å…¥æª”æ¡ˆçš„ç‰©ä»¶
     	File f = new File("addressBook");
-	String pathStr = "db/friendData.jdb";    	
+	String pathStr = "src/db/friendData.jdb";    	
     	saveBook(pathStr);
     }
     
-    //Àx¦s«ü©w¸ô®|¸ê®Æ®w
+    //å„²å­˜æŒ‡å®šè·¯å¾‘è³‡æ–™åº«
     protected void saveBook(String path)
     {
     	PrintWriter outs = null;
-    	String tempRow = ""; //¼È¦s³æµ§¸ê®Æ
+    	String tempRow = ""; //æš«å­˜å–®ç­†è³‡æ–™
     	String [][] tableArray = tableToArray(tmodel);
     	
     	try{
@@ -48,29 +48,29 @@ public class JAddressBook extends JAddressBookUI
     			tempRow = "";
     			for(int col = 0; col < tableArray[row].length; col++)
    					tempRow += tableArray[row][col] + ",";
-    			tempRow = tempRow.substring(0,tempRow.lastIndexOf(","));//¥h°£³Ì«áªº¤À¹j²Å¸¹
-    			outs.println(tempRow); //¼g¤J³æµ§¸ê®Æ
+    			tempRow = tempRow.substring(0,tempRow.lastIndexOf(","));//å»é™¤æœ€å¾Œçš„åˆ†éš”ç¬¦è™Ÿ
+    			outs.println(tempRow); //å¯«å…¥å–®ç­†è³‡æ–™
     		}
-        	JOptionPane.showMessageDialog(null,"¤w¦¨¥\Àx¦s³q°T¿ı¸ê®Æ","°T®§",JOptionPane.INFORMATION_MESSAGE);  	
+        	JOptionPane.showMessageDialog(null,"å·²æˆåŠŸå„²å­˜é€šè¨ŠéŒ„è³‡æ–™","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);  	
     	}catch(IOException e)
     	{
             JOptionPane.showMessageDialog(null, e.toString(),
-                    "Àx¦s³q°T¿ı¥¢±Ñ", JOptionPane.ERROR_MESSAGE);
+                    "å„²å­˜é€šè¨ŠéŒ„å¤±æ•—", JOptionPane.ERROR_MESSAGE);
     	}
     	finally
     	{
-    		outs.close(); //Ãö³¬¦sÀÉ   		
+    		outs.close(); //é—œé–‰å­˜æª”   		
     	}
     }
     
-    //Åª¨ú¹w³]¸ê®Æ®w
+    //è®€å–é è¨­è³‡æ–™åº«
     protected String [][] readBook()
     {
-	String pathStr = "db/friendData.jdb";
+	String pathStr = "src/db/friendData.jdb";
     	return readBook(pathStr);
     }
     
-    //Åª¨úpathªº¸ê®Æ®w
+    //è®€å–pathçš„è³‡æ–™åº«
     protected String [][] readBook(String path)
     {
     	BufferedReader in = null;
@@ -79,15 +79,15 @@ public class JAddressBook extends JAddressBookUI
     	
     	try
     	{
-    		//­pºâ­nÅª¤Jªº¸ê®Æµ§¼Æ
+    		//è¨ˆç®—è¦è®€å…¥çš„è³‡æ–™ç­†æ•¸
     		int count = 0;
-        	in = new BufferedReader(new FileReader(path));//«Ø¥ßÅª¨úÀÉ®×ªºª«¥ó
+        	in = new BufferedReader(new FileReader(path));//å»ºç«‹è®€å–æª”æ¡ˆçš„ç‰©ä»¶
     		while((friendData = in.readLine()) != null)
     			count++;
     		in.close();
     		
     		tempTable = new String[count][];
-        	in = new BufferedReader(new FileReader(path));//«Ø¥ßÅª¨úÀÉ®×ªºª«¥ó
+        	in = new BufferedReader(new FileReader(path));//å»ºç«‹è®€å–æª”æ¡ˆçš„ç‰©ä»¶
         	
         	int row = 0;
     		while((friendData = in.readLine()) != null)
@@ -98,31 +98,31 @@ public class JAddressBook extends JAddressBookUI
     	catch(IOException e)
     	{
             JOptionPane.showMessageDialog(null, e.toString(),
-                    "Åª¨ú¸ê®Æ®w¥¢±Ñ", JOptionPane.ERROR_MESSAGE);
+                    "è®€å–è³‡æ–™åº«å¤±æ•—", JOptionPane.ERROR_MESSAGE);
     	}
     	
     	return tempTable;
     }
     
-    //¶×¤JÀÉ®×
+    //åŒ¯å…¥æª”æ¡ˆ
     protected  void inputBook() 
     {
     	int option = fc.showDialog(null, null);
 
-        //½T»{yes©Îno
+        //ç¢ºèªyesæˆ–no
     	if(option == JFileChooser.APPROVE_OPTION)
         {
             File file = fc.getSelectedFile();          
-            tmodel.setDataVector(readBook(file.toString()),BookField); //§ó·s¸ê®Æªí
+            tmodel.setDataVector(readBook(file.toString()),BookField); //æ›´æ–°è³‡æ–™è¡¨
         }
     }
     
-    //¶×¥X³q°T¿ı
+    //åŒ¯å‡ºé€šè¨ŠéŒ„
     protected void outputBook() 
     {
     	int option = fc.showDialog(null, null);
 
-        //½T»{yes©Îno
+        //ç¢ºèªyesæˆ–no
     	if(option == JFileChooser.APPROVE_OPTION)
         {
             File file = fc.getSelectedFile();
@@ -131,41 +131,41 @@ public class JAddressBook extends JAddressBookUI
         }
     }
     
-    //·s¼W¤@ªÅ¥Õ¸ê®Æ¦C
+    //æ–°å¢ä¸€ç©ºç™½è³‡æ–™åˆ—
     protected void insertData() 
     {
     	tmodel.insertRow(0,new String[]{"N","N","N","N","N"});
     }
     
-    //¬d¸ß
+    //æŸ¥è©¢
     protected void dataSearch(int op) 
     {
-    	String na = JOptionPane.showInputDialog("½Ğ¿é¤J±ı¬d¸ß¦n¤Íªº" + BookField[op]);
+    	String na = JOptionPane.showInputDialog("è«‹è¼¸å…¥æ¬²æŸ¥è©¢å¥½å‹çš„" + BookField[op]);
     	
     	if(na == null) 
     		return;
     	int index = linearSearch(tmodel,na,op);
     	
     	if(index == -1)
-    		JOptionPane.showMessageDialog(null,"¨S¦³²Å¦Xªº¦n¤Í¸ê®Æ","°T®§",JOptionPane.INFORMATION_MESSAGE);
+    		JOptionPane.showMessageDialog(null,"æ²’æœ‰ç¬¦åˆçš„å¥½å‹è³‡æ–™","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);
     	else
-    		book.setRowSelectionInterval(index, index); //¸õ¨ì·j´M¨ìªº¸ê®Æµ§
+    		book.setRowSelectionInterval(index, index); //è·³åˆ°æœå°‹åˆ°çš„è³‡æ–™ç­†
     }
         
-    //§R°£©Ò¿ïªº¸ê®Æµ§
+    //åˆªé™¤æ‰€é¸çš„è³‡æ–™ç­†
     protected void deleteData() 
     {
     	if(book.getSelectedRow() != -1)
     	{
     		int op = JOptionPane.showConfirmDialog(null, 
-    				"½T©w§R°£" + book.getSelectedRowCount() + "µ§¸ê®Æ?", "°T®§", JOptionPane.YES_NO_OPTION);
+    				"ç¢ºå®šåˆªé™¤" + book.getSelectedRowCount() + "ç­†è³‡æ–™?", "è¨Šæ¯", JOptionPane.YES_NO_OPTION);
     		if(op == JOptionPane.YES_OPTION)
-    		{   //¨ú±o©Ò¦³±ı§R°£¦Cªº¯Á¤Ş­È
+    		{   //å–å¾—æ‰€æœ‰æ¬²åˆªé™¤åˆ—çš„ç´¢å¼•å€¼
     			int [] row = book.getSelectedRows();
     			
     			for(int r = 0; r < row.length; r++)
     			{
-    				tmodel.removeRow(row[r]);//§R°£1¦C®É¡A³Ñ¤Uªº¦C»İ´î1
+    				tmodel.removeRow(row[r]);//åˆªé™¤1åˆ—æ™‚ï¼Œå‰©ä¸‹çš„åˆ—éœ€æ¸›1
     				for(int i = r; i < row.length; i++ )
     					row[i]--;    				
     			}
@@ -173,36 +173,36 @@ public class JAddressBook extends JAddressBookUI
     		
     	}
     	else
-    		JOptionPane.showMessageDialog(null,"½Ğ¿ï¨ú¤@µ§¸ê®Æ","°T®§",JOptionPane.INFORMATION_MESSAGE);	
+    		JOptionPane.showMessageDialog(null,"è«‹é¸å–ä¸€ç­†è³‡æ–™","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);	
     }
     
-    //Ãö©ó³]­pªÌ
+    //é—œæ–¼è¨­è¨ˆè€…
     protected void showProgrammer()
     {
         JOptionPane.showMessageDialog(null,
-        	"µ{¦¡³]­p¡G¦N¥L¤â\n"+
+        	"ç¨‹å¼è¨­è¨ˆï¼šå‰ä»–æ‰‹\n"+
                 "http://blog.xuite.net/ray00000test/blog" ,
-                "§@ªÌ",JOptionPane.INFORMATION_MESSAGE);
+                "ä½œè€…",JOptionPane.INFORMATION_MESSAGE);
     }
 
-    //»¡©ú¨Æ¶µ
+    //èªªæ˜äº‹é …
     protected void showAbout()
     {
         JOptionPane.showMessageDialog(null,
-        	"»¡©ú¨Æ¶µ¡G\n"+
-                "1.·s¼W¥\¯à¡G·s¼W¤@µ§ªÅ¥Õ¦C\n" +
-                "2.½s¿è¥\¯à¡G½ĞÂI¿ï¨â¤U±ı­×§ïªºÄæ¦ì\n" +
-                "3.§R°£¥\¯à¡G§R°£©Ò¿ïÄ¶¼Æµ§¸ê®Æ\n" +
-                "4.¬d¸ß¥\¯à¡G¨Ì´£¥Ü¿é¤J¸ê®Æ¡A´N·j´M¨Ã¸õ¨ì¸Óµ§¸ê®Æ¦C\n" +
-                "5.Àx¦s¥\¯à¡GÀx¦s¥Ø«eÅã¥Üªº³q°T¿ı¸ê®Æ\n" +
-                "6.¶×¤J(¥X)¥\¯à¡G¶×¤J(¥X)³q°T¿ı©Ò¦³¸ê®Æ¨Ã¦sÀÉ¬°txt\n" +
-                "7.©m¦W¥i­«½Æ¡A«ØÄ³¤£­n¿é¤J­«½Æ©m¦W\n" + 
-		"8.±b±K¥\¯à¡A¥i­×§ï±b±K\n" + 
+        	"èªªæ˜äº‹é …ï¼š\n"+
+                "1.æ–°å¢åŠŸèƒ½ï¼šæ–°å¢ä¸€ç­†ç©ºç™½åˆ—\n" +
+                "2.ç·¨è¼¯åŠŸèƒ½ï¼šè«‹é»é¸å…©ä¸‹æ¬²ä¿®æ”¹çš„æ¬„ä½\n" +
+                "3.åˆªé™¤åŠŸèƒ½ï¼šåˆªé™¤æ‰€é¸è­¯æ•¸ç­†è³‡æ–™\n" +
+                "4.æŸ¥è©¢åŠŸèƒ½ï¼šä¾æç¤ºè¼¸å…¥è³‡æ–™ï¼Œå°±æœå°‹ä¸¦è·³åˆ°è©²ç­†è³‡æ–™åˆ—\n" +
+                "5.å„²å­˜åŠŸèƒ½ï¼šå„²å­˜ç›®å‰é¡¯ç¤ºçš„é€šè¨ŠéŒ„è³‡æ–™\n" +
+                "6.åŒ¯å…¥(å‡º)åŠŸèƒ½ï¼šåŒ¯å…¥(å‡º)é€šè¨ŠéŒ„æ‰€æœ‰è³‡æ–™ä¸¦å­˜æª”ç‚ºtxt\n" +
+                "7.å§“åå¯é‡è¤‡ï¼Œå»ºè­°ä¸è¦è¼¸å…¥é‡è¤‡å§“å\n" + 
+		"8.å¸³å¯†åŠŸèƒ½ï¼Œå¯ä¿®æ”¹å¸³å¯†\n" + 
                 "9.v1.1" ,
-                "Ãö©ó¥»µ{¦¡",JOptionPane.INFORMATION_MESSAGE);
+                "é—œæ–¼æœ¬ç¨‹å¼",JOptionPane.INFORMATION_MESSAGE);
     }
     
-    //´`§Ç·j´Mªk(¨Ï¥Î½Ã§L)
+    //å¾ªåºæœå°‹æ³•(ä½¿ç”¨è¡›å…µ)
     private int linearSearch(DefaultTableModel dtm,String key,int option)
     {
     	final int N = dtm.getRowCount();
@@ -210,18 +210,18 @@ public class JAddressBook extends JAddressBookUI
         
         for(int i = 0; i < N; i++)
         	tmp[i] = (String)dtm.getValueAt(i,option);
-        tmp[N] = key; //³]½Ã§L
+        tmp[N] = key; //è¨­è¡›å…µ
         int i = 0;
         while(!key.equals(tmp[i]))
         	i++;
         
-        //§ä¨ì¸ê®Æ¦^¶Ç¦C¦ì¸m¡A¤Ï¤§¦^¶Ç-1
+        //æ‰¾åˆ°è³‡æ–™å›å‚³åˆ—ä½ç½®ï¼Œåä¹‹å›å‚³-1
         if (i < N )
         	return i;
         return -1;  
     }
     
-    //±N¸ê®Æªí¦s¬°¤Gºû°}¦C
+    //å°‡è³‡æ–™è¡¨å­˜ç‚ºäºŒç¶­é™£åˆ—
     private String [][] tableToArray(DefaultTableModel dTable)
     {
     	String [][] tempTable = new String[dTable.getRowCount()][dTable.getColumnCount()];
@@ -239,7 +239,7 @@ public class JAddressBook extends JAddressBookUI
     	return tempTable;
     }
     
-    //µ²§ôµ{¦¡
+    //çµæŸç¨‹å¼
     protected void exitBook()
     {
         if(isFileEdit()) 
@@ -249,8 +249,8 @@ public class JAddressBook extends JAddressBookUI
         else 
         {
             int msg = JOptionPane.showConfirmDialog(
-                    null, "³q°T¿ı¤w­×§ï¡A¬O§_Àx¦s?",
-                    "Àx¦s³q°T¿ı?", JOptionPane.YES_NO_OPTION, 
+                    null, "é€šè¨ŠéŒ„å·²ä¿®æ”¹ï¼Œæ˜¯å¦å„²å­˜?",
+                    "å„²å­˜é€šè¨ŠéŒ„?", JOptionPane.YES_NO_OPTION, 
                     JOptionPane.WARNING_MESSAGE, null);
 
             switch(msg) {
@@ -264,7 +264,7 @@ public class JAddressBook extends JAddressBookUI
         System.exit(0);
     }
 
-    //§PÂ_­×§ï±b±Kµøµ¡¬O§_¤w«Ø¥ß¨Ã³]©wÅã¥Ü
+    //åˆ¤æ–·ä¿®æ”¹å¸³å¯†è¦–çª—æ˜¯å¦å·²å»ºç«‹ä¸¦è¨­å®šé¡¯ç¤º
     protected void setIDPW()
     {
 	if(js == null)
@@ -272,14 +272,14 @@ public class JAddressBook extends JAddressBookUI
 	js.setVisible(true);
     }
 
-    //§PÂ_¸ê®Æªí¬O§_¦³­×§ï¹L
+    //åˆ¤æ–·è³‡æ–™è¡¨æ˜¯å¦æœ‰ä¿®æ”¹é
     private boolean isFileEdit()
     {
-    	//¨ú±o¥Ø«eÅã¥Üªº¸ê®Æ
-    	String [][] beforeDb = readBook(); //­×§ï«e¸ê®Æªí
-    	String [][] afterDb = tableToArray(tmodel); //­×§ï«á¸ê®Æªí
+    	//å–å¾—ç›®å‰é¡¯ç¤ºçš„è³‡æ–™
+    	String [][] beforeDb = readBook(); //ä¿®æ”¹å‰è³‡æ–™è¡¨
+    	String [][] afterDb = tableToArray(tmodel); //ä¿®æ”¹å¾Œè³‡æ–™è¡¨
 
-    	//¤ñ¹ï­ì¥»ªº¸ê®Æªí»P¥Ø«eÅã¥Üªº¸ê®Æªí¬O§_¤@¼Ë
+    	//æ¯”å°åŸæœ¬çš„è³‡æ–™è¡¨èˆ‡ç›®å‰é¡¯ç¤ºçš„è³‡æ–™è¡¨æ˜¯å¦ä¸€æ¨£
     	if(Arrays.deepEquals(beforeDb, afterDb))
     		return true;
 

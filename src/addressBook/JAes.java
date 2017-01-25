@@ -1,4 +1,4 @@
-//�{���W�١GAES�[�K�ѱK
+//程式名稱：AES加密解密
 
 package addressBook;
 
@@ -13,7 +13,7 @@ public class JAes
 {
 	private final static int KEY_SIZE=128;
 
-	//�[�K
+	//加密
 	public String getencrypt(String key, String plain)
 	{
 		String encrypted="";
@@ -21,7 +21,12 @@ public class JAes
 		try
 		{
 			KeyGenerator kgen = KeyGenerator.getInstance("AES");
-			kgen.init(KEY_SIZE, new SecureRandom(key.getBytes()));
+			 //防止Linux下隨機生成Key
+            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG" );  
+            secureRandom.setSeed(key.getBytes());  
+            // 根據金鑰初始化金鑰產生器
+            kgen.init(KEY_SIZE, secureRandom); 
+			//kgen.init(KEY_SIZE, new SecureRandom(key.getBytes()));
 			SecretKey skey = kgen.generateKey();
 			SecretKeySpec skeySpec = new SecretKeySpec(skey.getEncoded(), "AES");
 			Cipher cipher = Cipher.getInstance("AES");
@@ -32,12 +37,12 @@ public class JAes
 		catch(Exception ex)
 		{
 			JOptionPane.showMessageDialog(null, ex.toString(),
-			"aes�[�K����", JOptionPane.ERROR_MESSAGE);
+			"aes加密失敗", JOptionPane.ERROR_MESSAGE);
 		}
 		return encrypted;
 	}
 
-	//�ѱK
+	//解密
 	public String getdecrypt(String k2, String base64)
 	{
 		String decrypted="";
@@ -45,7 +50,12 @@ public class JAes
 		try
 		{
 			KeyGenerator kgen2 = KeyGenerator.getInstance("AES");
-			kgen2.init(KEY_SIZE, new SecureRandom(k2.getBytes()));
+			//防止Linux下隨機生成Key
+            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG" );  
+            secureRandom.setSeed(k2.getBytes());  
+            // 根據金鑰初始化金鑰產生器
+            kgen2.init(KEY_SIZE, secureRandom); 
+			//kgen2.init(KEY_SIZE, new SecureRandom(k2.getBytes()));
 			SecretKey skey2 = kgen2.generateKey();
 			SecretKeySpec skeySpec2 = new SecretKeySpec(skey2.getEncoded(), "AES");
 
@@ -57,7 +67,7 @@ public class JAes
 		catch(Exception ex)
 		{
 			JOptionPane.showMessageDialog(null, ex.toString(),
-			"aes�ѱK����", JOptionPane.ERROR_MESSAGE);
+			"aes解密失敗", JOptionPane.ERROR_MESSAGE);
 		}
 		return decrypted;
 	}

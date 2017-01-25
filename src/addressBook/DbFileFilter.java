@@ -1,6 +1,6 @@
-//¦¹µ{¦¡°Ñ¦Ò¡u¨}¸¯®æ-JNotePad - Â²³æªº¤å¦r½s¿è¾¹¡v
-//°Ñ¦Òºô§}¡Ghttp://caterpillar.onlyfun.net/Gossip/index.html
-//¦WºÙ¡GÀÉ®×¹LÃy
+//æ­¤ç¨‹å¼åƒè€ƒã€Œè‰¯è‘›æ ¼-JNotePad - ç°¡å–®çš„æ–‡å­—ç·¨è¼¯å™¨ã€
+//åƒè€ƒç¶²å€ï¼šhttp://caterpillar.onlyfun.net/Gossip/index.html
+//åç¨±ï¼šæª”æ¡ˆéç€˜
 
 package addressBook;
 
@@ -11,17 +11,17 @@ public class DbFileFilter extends FileFilter
 {
     public boolean accept(File file)
     {
-    	//§PÂ_¬O§_¬°¥Ø¿ı
+    	//åˆ¤æ–·æ˜¯å¦ç‚ºç›®éŒ„
         if(file.isDirectory())
             return true;
         
-        //§PÂ_¬O§_¦³°ÆÀÉ¦W
+        //åˆ¤æ–·æ˜¯å¦æœ‰å‰¯æª”å
         int i = file.getName().lastIndexOf('.');
         
         if(i == -1)
             return false;
         
-        //§PÂ_°ÆÀÉ¦W¬O§_¥¿½T
+        //åˆ¤æ–·å‰¯æª”åæ˜¯å¦æ­£ç¢º
         String extname = file.getName().substring(i).toLowerCase();
         if(extname.equals(".txt"))
             return true;

@@ -1,6 +1,6 @@
-//¦WºÙ¡G³q°T¿ı¤¶­±
-//³]­p®v¡G¦N¥L¤â
-//¤é´Á¡G2008/07/24
+//åç¨±ï¼šé€šè¨ŠéŒ„ä»‹é¢
+//è¨­è¨ˆå¸«ï¼šå‰ä»–æ‰‹
+//æ—¥æœŸï¼š2008/07/24
 
 
 package addressBook;
@@ -14,40 +14,40 @@ import javax.swing.table.*;
 
 public abstract  class JAddressBookUI extends JFrame
 {
-        private ButtonHandler bh = new ButtonHandler();//¥\¯àªí³æ¨Æ¥ó
+        private ButtonHandler bh = new ButtonHandler();//åŠŸèƒ½è¡¨å–®äº‹ä»¶
         private JMenuBar jmb;
-        private JMenu jmu = new JMenu("ÀÉ®×"),about = new JMenu("Ãö©ó"),setting = new JMenu("³]©w");
-        private JMenuItem [] jmi1 = new JMenuItem[4];//ÀÉ®×¿ï³æ
-        private JMenuItem [] abo = new JMenuItem[2];//Ãö©ó¿ï³æ
-	private JMenuItem [] set = new JMenuItem[1];//³]©w¿ï³æ
-        private JButton insert = new JButton("·s¼W");
-        private JButton search = new JButton("¬d¸ß");
-        private JButton delete = new JButton("§R°£");
+        private JMenu jmu = new JMenu("æª”æ¡ˆ"),about = new JMenu("é—œæ–¼"),setting = new JMenu("è¨­å®š");
+        private JMenuItem [] jmi1 = new JMenuItem[4];//æª”æ¡ˆé¸å–®
+        private JMenuItem [] abo = new JMenuItem[2];//é—œæ–¼é¸å–®
+	private JMenuItem [] set = new JMenuItem[1];//è¨­å®šé¸å–®
+        private JButton insert = new JButton("æ–°å¢");
+        private JButton search = new JButton("æŸ¥è©¢");
+        private JButton delete = new JButton("åˆªé™¤");
         private JPanel jpl = new JPanel(new GridLayout(1,3,30,0));
         private JComboBox jcbox;
         private String [][] db = readBook();
-        protected String [] BookField = {"©m¦W","¥Í¤é","¤â¾÷","¦í®a¹q¸Ü","§Y®É³q/MSN"};
-        protected DefaultTableModel tmodel = new DefaultTableModel(db,BookField); //«Ø¥ßªí®æ      
-        protected JTable book = new JTable(tmodel); //«Ø¥ßJTable
+        protected String [] BookField = {"å§“å","ç”Ÿæ—¥","æ‰‹æ©Ÿ","ä½å®¶é›»è©±","å³æ™‚é€š/MSN"};
+        protected DefaultTableModel tmodel = new DefaultTableModel(db,BookField); //å»ºç«‹è¡¨æ ¼      
+        protected JTable book = new JTable(tmodel); //å»ºç«‹JTable
         
         public JAddressBookUI()
         {
-                super("³q°T¿ı");
-                db = readBook(); //Åª¨ú¸ê®Æ®w
+                super("é€šè¨ŠéŒ„");
+                db = readBook(); //è®€å–è³‡æ–™åº«
                 Container c = getContentPane();
                 c.setLayout(new BorderLayout());
                 jmb = new JMenuBar();
-                this.setJMenuBar(jmb); //¥[¤J¤u¨ã¦C
+                this.setJMenuBar(jmb); //åŠ å…¥å·¥å…·åˆ—
                 
-                //¬d¸ß¿ï¶µ¤U©Ô¦¡¿ï³æ
+                //æŸ¥è©¢é¸é …ä¸‹æ‹‰å¼é¸å–®
                 jcbox = new JComboBox(BookField);
                 
-                //³q°T¿ıªº¥\¯à¶µ¥Ø
+                //é€šè¨ŠéŒ„çš„åŠŸèƒ½é …ç›®
                 jmb.add(jmu);
-                jmi1[0] = new JMenuItem("Àx¦s");
-                jmi1[1] = new JMenuItem("¶×¤J³q°T¿ı");
-                jmi1[2] = new JMenuItem("¶×¥X³q°T¿ı");
-                jmi1[3] = new JMenuItem("µ²§ôµ{¦¡");
+                jmi1[0] = new JMenuItem("å„²å­˜");
+                jmi1[1] = new JMenuItem("åŒ¯å…¥é€šè¨ŠéŒ„");
+                jmi1[2] = new JMenuItem("åŒ¯å‡ºé€šè¨ŠéŒ„");
+                jmi1[3] = new JMenuItem("çµæŸç¨‹å¼");
                 jmu.add(jmi1[0]);
                 jmu.addSeparator();
                 jmu.add(jmi1[1]);
@@ -55,21 +55,21 @@ public abstract  class JAddressBookUI extends JFrame
                 jmu.addSeparator();
                 jmu.add(jmi1[3]);
                 
-                //³]©w¸ê®Æªí¨Ã¥[¤Jºu½ü
+                //è¨­å®šè³‡æ–™è¡¨ä¸¦åŠ å…¥æ»¾è¼ª
                 book.getColumnModel().getColumn(4).setPreferredWidth(180);
-                book.getTableHeader().setReorderingAllowed(false); //Ãö³¬©ì°ÊÄæ¦ì¥\¯à
-                book.setShowHorizontalLines(false); //¤£Åã¥Ü¦C¾î½u
+                book.getTableHeader().setReorderingAllowed(false); //é—œé–‰æ‹–å‹•æ¬„ä½åŠŸèƒ½
+                book.setShowHorizontalLines(false); //ä¸é¡¯ç¤ºåˆ—æ©«ç·š
                 c.add(new JScrollPane(book),BorderLayout.CENTER);
 
-		//³]©wªº¿ï¾Ü¶µ¥Ø
+		//è¨­å®šçš„é¸æ“‡é …ç›®
                 jmb.add(setting);
-                set[0] = new JMenuItem("­×§ï±b±K");
+                set[0] = new JMenuItem("ä¿®æ”¹å¸³å¯†");
                 setting.add(set[0]);
 
-                //Ãö©óªº¿ï¾Ü¶µ¥Ø
+                //é—œæ–¼çš„é¸æ“‡é …ç›®
                 jmb.add(about);
-                abo[0] = new JMenuItem("µ{¦¡»¡©ú");
-                abo[1] = new JMenuItem("§@ªÌ");
+                abo[0] = new JMenuItem("ç¨‹å¼èªªæ˜");
+                abo[1] = new JMenuItem("ä½œè€…");
                 about.add(abo[0]);
                 about.add(abo[1]);
 
@@ -80,13 +80,13 @@ public abstract  class JAddressBookUI extends JFrame
                 
                 c.add(jpl,BorderLayout.NORTH);
                               
-                //³]©wµøµ¡
+                //è¨­å®šè¦–çª—
                 setSize(500,400);
                 setLocation(50,50); 
-                setResizable(false);//µøµ¡©ñ¤j«ö¶sµL®Ä 
+                setResizable(false);//è¦–çª—æ”¾å¤§æŒ‰éˆ•ç„¡æ•ˆ 
                 setVisible(true);
                 
-                //«ö¤Uµøµ¡Ãö³¬¶s¨Æ¥ó³B²z
+                //æŒ‰ä¸‹è¦–çª—é—œé–‰éˆ•äº‹ä»¶è™•ç†
                 addWindowListener(
                     new WindowAdapter() {
                         public void windowClosing(WindowEvent e) { 
@@ -95,62 +95,62 @@ public abstract  class JAddressBookUI extends JFrame
                     }
                 );
                       
-                //µù¥U¥\¯àªí³æ¶ÉÅ¥ªÌ
+                //è¨»å†ŠåŠŸèƒ½è¡¨å–®å‚¾è½è€…
                 for(int m=0;m<jmi1.length;m++)
                 	jmi1[m].addActionListener(bh);
                 abo[0].addActionListener(bh);
                 abo[1].addActionListener(bh);
 		set[0].addActionListener(bh);
                 
-                //µù¥U«ö¶s¶ÉÅ¥ªÌ
+                //è¨»å†ŠæŒ‰éˆ•å‚¾è½è€…
                 insert.addActionListener(bh);
                 search.addActionListener(bh);
                 delete.addActionListener(bh);             
         }
         
-        //¥\¯àªí³æ¨Æ¥ó³B²z
+        //åŠŸèƒ½è¡¨å–®äº‹ä»¶è™•ç†
         private class ButtonHandler implements  ActionListener
         {
                 public void actionPerformed(ActionEvent ae) 
                 {                        
-                        if(ae.getSource() == jmi1[0]) //Àx¦s
+                        if(ae.getSource() == jmi1[0]) //å„²å­˜
                         {
                         	saveBook();
                         }
-                        else if(ae.getSource() == jmi1[1]) //¶×¤J³q°T¿ı
+                        else if(ae.getSource() == jmi1[1]) //åŒ¯å…¥é€šè¨ŠéŒ„
                         {
                         	inputBook();
                         }
-                        else if(ae.getSource() == jmi1[2]) //¶×¥X³q°T¿ı
+                        else if(ae.getSource() == jmi1[2]) //åŒ¯å‡ºé€šè¨ŠéŒ„
                         {
                         	outputBook();
                         }
-                        else if(ae.getSource() == jmi1[3]) //µ²§ôµ{¦¡
+                        else if(ae.getSource() == jmi1[3]) //çµæŸç¨‹å¼
                         {
                         	exitBook();
                         }
-                        else if(ae.getSource() == abo[0]) //µ{¦¡»¡©ú
+                        else if(ae.getSource() == abo[0]) //ç¨‹å¼èªªæ˜
                         {
                         	showAbout();
                         }
-                        else if(ae.getSource() == abo[1]) //§@ªÌ
+                        else if(ae.getSource() == abo[1]) //ä½œè€…
                         {
                         	showProgrammer();
                         }
-			else if(ae.getSource() == set[0]) //³]©w·s±b±K
+			else if(ae.getSource() == set[0]) //è¨­å®šæ–°å¸³å¯†
                         {
                         	setIDPW();
                         }
-                        else if(ae.getSource() == insert) //·s¼W
+                        else if(ae.getSource() == insert) //æ–°å¢
                         {
                         	insertData();
                         }
-                        else if(ae.getSource() == search) //¥Î©m¦W¬d¸ß
+                        else if(ae.getSource() == search) //ç”¨å§“åæŸ¥è©¢
                         {
-                        	//¤Ş¼Æ¬°¤U©Ô¿ï¶µªº¯Á¤Ş­È
+                        	//å¼•æ•¸ç‚ºä¸‹æ‹‰é¸é …çš„ç´¢å¼•å€¼
                         	dataSearch(jcbox.getSelectedIndex());
                         }
-                        else if(ae.getSource() == delete) //§R°£
+                        else if(ae.getSource() == delete) //åˆªé™¤
                         {
                         	deleteData();                        	
                         }
@@ -158,17 +158,17 @@ public abstract  class JAddressBookUI extends JFrame
                 }
         }
                 
-        protected abstract void saveBook(); //Àx¦s¸ê®Æªí¨ì¸ê®Æ®w
-        protected abstract void saveBook(String path); //³]©w¸ô®|«áÀx¦s
-        protected abstract String [][] readBook(); //Åª¨ú¹w³]¸ê®Æ®w¨ì¸ê®Æªí
-        protected abstract String [][] readBook(String path); //Åª¨úpathªº¸ê®Æ®w¨ì¸ê®Æªí
-        protected abstract void inputBook(); //¶×¤JÀÉ®×
-        protected abstract void outputBook(); //¶×¥XÀÉ®×
-        protected abstract void insertData(); //·s¼W
-        protected abstract void dataSearch(int op); //¥H¿ïÄ¶¶µ¥Ø¬d¸ß
-        protected abstract void deleteData(); //§R°£³æµ§¸ê®Æ
-        protected abstract void setIDPW(); //Àx¦s¸ê®Æªí¨ì¸ê®Æ®w
-        protected abstract void showProgrammer(); //Åã¥ÜÃö©ó³]­pªÌ
-        protected abstract void showAbout(); //Åã¥Üµ{¦¡»¡©ú
-        protected abstract void exitBook(); //µ²§ôµ{¦¡
+        protected abstract void saveBook(); //å„²å­˜è³‡æ–™è¡¨åˆ°è³‡æ–™åº«
+        protected abstract void saveBook(String path); //è¨­å®šè·¯å¾‘å¾Œå„²å­˜
+        protected abstract String [][] readBook(); //è®€å–é è¨­è³‡æ–™åº«åˆ°è³‡æ–™è¡¨
+        protected abstract String [][] readBook(String path); //è®€å–pathçš„è³‡æ–™åº«åˆ°è³‡æ–™è¡¨
+        protected abstract void inputBook(); //åŒ¯å…¥æª”æ¡ˆ
+        protected abstract void outputBook(); //åŒ¯å‡ºæª”æ¡ˆ
+        protected abstract void insertData(); //æ–°å¢
+        protected abstract void dataSearch(int op); //ä»¥é¸è­¯é …ç›®æŸ¥è©¢
+        protected abstract void deleteData(); //åˆªé™¤å–®ç­†è³‡æ–™
+        protected abstract void setIDPW(); //å„²å­˜è³‡æ–™è¡¨åˆ°è³‡æ–™åº«
+        protected abstract void showProgrammer(); //é¡¯ç¤ºé—œæ–¼è¨­è¨ˆè€…
+        protected abstract void showAbout(); //é¡¯ç¤ºç¨‹å¼èªªæ˜
+        protected abstract void exitBook(); //çµæŸç¨‹å¼
 }

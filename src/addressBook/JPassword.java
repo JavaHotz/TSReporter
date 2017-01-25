@@ -1,5 +1,5 @@
-//¦WºÙ¡GÀË¬d±b¸¹±K½X
-//³]­p®v¡G¦N¥L¤â
+//åç¨±ï¼šæª¢æŸ¥å¸³è™Ÿå¯†ç¢¼
+//è¨­è¨ˆå¸«ï¼šå‰ä»–æ‰‹
 
 package addressBook;
 
@@ -10,31 +10,31 @@ import javax.swing.JOptionPane;
 
 public class JPassword extends JPasswordUI
 {
-	private String id,txtID,txtPW,pw; //¨ú±o±b¸¹±K½X¦r¦ê
-	private Properties props; //¥Î¨ÓÅª¨útxt¸Ìªº±b±K­È
+	private String id,txtID,txtPW,pw; //å–å¾—å¸³è™Ÿå¯†ç¢¼å­—ä¸²
+	private Properties props; //ç”¨ä¾†è®€å–txtè£¡çš„å¸³å¯†å€¼
 	
-	//ÀË¬d±b±K
+	//æª¢æŸ¥å¸³å¯†
 	protected void checkID_PW()
 	{
 		id = this.getID();
 		pw = new String(this.getPW());
 		props = new Properties();
 		try {
-		props.load(new FileInputStream("src/init.txt")); //Åª¨ú³]©wÀÉ
+		props.load(new FileInputStream("src/init.txt")); //è®€å–è¨­å®šæª”
         } catch (IOException ioe) {
 		JOptionPane.showMessageDialog(null, ioe.toString(),
-                    		"¶}±Ò init.txt ¿ù»~!", JOptionPane.ERROR_MESSAGE);
+                    		"é–‹å•Ÿ init.txt éŒ¯èª¤!", JOptionPane.ERROR_MESSAGE);
         }
 		txtID = props.getProperty("bookID");
 		txtPW = props.getProperty("bookPW");
 
-		txtID = aes.getdecrypt(key,txtID); //±N±b¸¹¥Îaes¸Ñ±K
-		txtPW = aes.getdecrypt(key,txtPW); //±N±K½X¥Îaes¸Ñ±K
+		txtID = aes.getdecrypt(key,txtID); //å°‡å¸³è™Ÿç”¨aesè§£å¯†
+		txtPW = aes.getdecrypt(key,txtPW); //å°‡å¯†ç¢¼ç”¨aesè§£å¯†
 		
 		if(pw.length() > 8)
 		{
 	    		JOptionPane.showMessageDialog(null,
-			"±K½Xªø«×¶W¹L8­Ó¦r¤¸","°T®§",JOptionPane.INFORMATION_MESSAGE);
+			"å¯†ç¢¼é•·åº¦è¶…é8å€‹å­—å…ƒ","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 		
@@ -45,6 +45,6 @@ public class JPassword extends JPasswordUI
 			return;
 		}
 	    	JOptionPane.showMessageDialog(null,
-		"±b¸¹±K½X¿ù»~!!","°T®§",JOptionPane.INFORMATION_MESSAGE);
+		"å¸³è™Ÿå¯†ç¢¼éŒ¯èª¤!!","è¨Šæ¯",JOptionPane.INFORMATION_MESSAGE);
 	}
 }

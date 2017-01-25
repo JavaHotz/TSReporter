@@ -1,24 +1,24 @@
-����{�����I��"bin"��Ƨ��̪�"²���q�T��v1.1.jar"��U�A�w�]�b��: test�@�K�X: 1234 �C
+執行程式請點擊"bin"資料夾裡的"簡易通訊錄v1.1.jar"兩下，預設帳號: test　密碼: 1234 。
 
-���O�����G 
-1.�q�T�������GJAddressBookUI.java 
-2.�q�T���\���@�GJAddressBook.java 
-3.�ɮ׹L�y�B�z�GDbFileFilter.java 
-4.�{������D���O�GJAddressBookTest.java 
-5.AES�[�K�GJAes.java 
-6.�b���K�X�����GJPasswordUI.java 
-7.��J�b�K�{�ҳB�z�GJPassword.java 
-8.�ק�b�K�]�w�B�z�GJSetting.java 
+類別說明： 
+1.通訊錄介面：JAddressBookUI.java 
+2.通訊錄功能實作：JAddressBook.java 
+3.檔案過瀘處理：DbFileFilter.java 
+4.程式執行主類別：JAddressBookTest.java 
+5.AES加密：JAes.java 
+6.帳號密碼介面：JPasswordUI.java 
+7.輸入帳密認證處理：JPassword.java 
+8.修改帳密設定處理：JSetting.java 
 
-�\�໡���P�����G
-1.�s�W�\��G�s�W�@���ťզC 
-2.�s��\��G���I���U���ק諸��� 
-3.�R���\��G�R���ҿ�Ķ�Ƶ���� 
-4.�d�ߥ\��G�̴��ܿ�J��ơA�N�j�M�ø���ӵ���ƦC 
-5.�x�s�\��G�x�s�ثe��ܪ��q�T����� 
-6.�פJ(�X)�\��G�פJ(�X)�q�T���Ҧ���ƨæs�ɬ�txt 
-7.�m�W�i���ơA���|�v�T�j�M���G�A��ĳ���n��J���Ʃm�W  
-8.����ɱb���K�X�{�ҥ\��A�i�ק�b���K�X�A�ù�b���K�X�ϥ�aes���[�K 
-9.init.txt���x�s�[�K�L���b���K�X�A�Ф��H����鷺�e 
-10.�w�]�b��: test�@�K�X: 1234 
-11.����v1.1 
+功能說明與版本：
+1.新增功能：新增一筆空白列 
+2.編輯功能：請點選兩下欲修改的欄位 
+3.刪除功能：刪除所選譯數筆資料 
+4.查詢功能：依提示輸入資料，就搜尋並跳到該筆資料列 
+5.儲存功能：儲存目前顯示的通訊錄資料 
+6.匯入(出)功能：匯入(出)通訊錄所有資料並存檔為txt 
+7.姓名可重複，但會影響搜尋結果，建議不要輸入重複姓名  
+8.執行時帳號密碼認證功能，可修改帳號密碼，並對帳號密碼使用aes做加密 
+9.init.txt為儲存加密過的帳號密碼，請勿隨易更改內容 
+10.預設帳號: test　密碼: 1234 
+11.版本v1.1 
