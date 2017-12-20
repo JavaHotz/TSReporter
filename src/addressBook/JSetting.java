@@ -1,4 +1,4 @@
-//名稱：通訊錄設定新帳號與密碼介面
+//名稱：設定新帳號與密碼介面
 //設計師：吉他手
 
 package addressBook;
@@ -17,16 +17,16 @@ public class JSetting extends JPasswordUI
 	{
 		this.setTitle("修改帳密");
 		Jlb_ID.setText("新帳號");
-		Jlb_ID.setSize(60,20);
-		Jlb_ID.setLocation(10,10);
+		Jlb_ID.setSize(100,40);
+		Jlb_ID.setLocation(30,50);
 		Jlb_PW.setText("新密碼");
-		Jlb_PW.setSize(60,20);
-		Jlb_PW.setLocation(10,50);
+		Jlb_PW.setSize(100,40);
+		Jlb_PW.setLocation(30,100);
 
 		props = new Properties();
 		
 		//設定視窗
-		setSize(200,150);
+		setSize(400,300);
 		setLocation(300,200); 
  		setResizable(false);//視窗放大按鈕無效 
  		setVisible(true);

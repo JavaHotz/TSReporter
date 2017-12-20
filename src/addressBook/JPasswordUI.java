@@ -1,5 +1,4 @@
-//名稱：通訊錄密碼輸入介面
-//設計師：吉他手
+//名稱：密碼輸入介面
 
 package addressBook;
 
@@ -17,6 +16,7 @@ public abstract class JPasswordUI extends JFrame
 	private JTextField jid = new JTextField(10);
 	private JButton Jbtn_YES = new JButton("    Ok    ");
 	private JButton Jbtn_NO = new JButton("   Clean   ");
+	private JButton Jbtn_Guest = new JButton("   Geust   ");
 	private ButtonHandler hbtHandler = new ButtonHandler();  //處理按鈕事件 
 
 	public JPasswordUI()
@@ -91,6 +91,17 @@ public abstract class JPasswordUI extends JFrame
 		bag6.fill = GridBagConstraints.NONE;
 		bag6.anchor = GridBagConstraints.LAST_LINE_END;
 		
+		GridBagConstraints bag7 = new GridBagConstraints();
+		bag7.gridx = 1;
+		bag7.gridy = 4;
+		bag7.gridwidth = 4;
+		bag7.gridheight = 1;
+		bag7.weightx = 0;
+		bag7.weighty = 0;
+		bag7.insets= new Insets(0,0,0,0);
+		bag7.fill = GridBagConstraints.NONE;
+		bag7.anchor = GridBagConstraints.CENTER;
+		
 		//設定Jlb_ID大小位置及顯示字型
 		Jlb_ID.setLocation(20,10);
 		Jlb_ID.setSize(100,40);
@@ -121,21 +132,26 @@ public abstract class JPasswordUI extends JFrame
 				
 		//設定確定按鈕大小位置及顯示字型
 		Jbtn_YES.setLocation(10,270);
-		Jbtn_YES.setSize(200,40);
+		Jbtn_YES.setSize(200,50);
 		Jbtn_YES.addActionListener(hbtHandler);
 		Jbtn_YES.setFont(new Font("Serif", Font.PLAIN, 24));
 		c.add(Jbtn_YES, bag5);
 		//設定清除按鈕大小位置及顯示字型
 		Jbtn_NO.setLocation(350,270);
-		Jbtn_NO.setSize(200,40);
+		Jbtn_NO.setSize(200,50);
 		Jbtn_NO.addActionListener(hbtHandler);
 		Jbtn_NO.setFont(new Font("Serif", Font.PLAIN, 24));
 		c.add(Jbtn_NO, bag6);
-		
+		//設定清除按鈕大小位置及顯示字型
+		Jbtn_Guest.setLocation(180,270);
+		Jbtn_Guest.setSize(200,50);
+		Jbtn_Guest.addActionListener(hbtHandler);
+		Jbtn_Guest.setFont(new Font("Serif", Font.PLAIN, 24));
+		c.add(Jbtn_Guest, bag7);
 		
 		//設定視窗
 		setSize(400,300);
-		setLocation(600,200); 
+		setLocation(400,200); 
  		setResizable(false);//視窗放大按鈕無效 
  		setVisible(true);
  		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -151,6 +167,12 @@ public abstract class JPasswordUI extends JFrame
 			}else if(evtE.getSource() == Jbtn_NO)
 			{
 				cleanID_PW();
+			}
+			else if(evtE.getSource() == Jbtn_Guest)
+			{
+				new JAddressBook();
+				setVisible(false);
+				return;
 			}
 		}
 	}

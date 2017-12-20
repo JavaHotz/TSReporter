@@ -1,12 +1,12 @@
-//名稱：通訊錄
-//設計師：吉他手
-//日期：2008/07/24
+//名稱：工單列表
+//日期：2017/12/19
 
 package addressBook;
 import java.io.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.util.Arrays;
+import java.util.Date;
 
 public class JAddressBook extends JAddressBookUI
 {
@@ -24,7 +24,7 @@ public class JAddressBook extends JAddressBookUI
     protected void saveBook() 
     {
     	int op = JOptionPane.showConfirmDialog(null, 
-				"確定儲存通訊錄?", "訊息", JOptionPane.YES_NO_OPTION);
+				"確定儲存?", "訊息", JOptionPane.YES_NO_OPTION);
 		if(op == JOptionPane.NO_OPTION)
 			return;
 		
@@ -51,11 +51,11 @@ public class JAddressBook extends JAddressBookUI
     			tempRow = tempRow.substring(0,tempRow.lastIndexOf(","));//去除最後的分隔符號
     			outs.println(tempRow); //寫入單筆資料
     		}
-        	JOptionPane.showMessageDialog(null,"已成功儲存通訊錄資料","訊息",JOptionPane.INFORMATION_MESSAGE);  	
+        	JOptionPane.showMessageDialog(null,"已成功儲存","訊息",JOptionPane.INFORMATION_MESSAGE);  	
     	}catch(IOException e)
     	{
             JOptionPane.showMessageDialog(null, e.toString(),
-                    "儲存通訊錄失敗", JOptionPane.ERROR_MESSAGE);
+                    "儲存失敗", JOptionPane.ERROR_MESSAGE);
     	}
     	finally
     	{
@@ -117,7 +117,7 @@ public class JAddressBook extends JAddressBookUI
         }
     }
     
-    //匯出通訊錄
+    //匯出
     protected void outputBook() 
     {
     	int option = fc.showDialog(null, null);
@@ -134,20 +134,20 @@ public class JAddressBook extends JAddressBookUI
     //新增一空白資料列
     protected void insertData() 
     {
-    	tmodel.insertRow(0,new String[]{"N","N","N","N","N"});
+    	tmodel.insertRow(0,new String[]{"QA4C","NaN","NaN","NaN","NaN","NaN","NaN","NaN","NaN","NaN","NaN","NaN","NaN", new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date())});
     }
     
     //查詢
     protected void dataSearch(int op) 
     {
-    	String na = JOptionPane.showInputDialog("請輸入欲查詢好友的" + BookField[op]);
+    	String na = JOptionPane.showInputDialog("請輸入欲查詢的" + BookField[op]);
     	
     	if(na == null) 
     		return;
     	int index = linearSearch(tmodel,na,op);
     	
     	if(index == -1)
-    		JOptionPane.showMessageDialog(null,"沒有符合的好友資料","訊息",JOptionPane.INFORMATION_MESSAGE);
+    		JOptionPane.showMessageDialog(null,"沒有符合的資料","訊息",JOptionPane.INFORMATION_MESSAGE);
     	else
     		book.setRowSelectionInterval(index, index); //跳到搜尋到的資料筆
     }
@@ -180,8 +180,7 @@ public class JAddressBook extends JAddressBookUI
     protected void showProgrammer()
     {
         JOptionPane.showMessageDialog(null,
-        	"程式設計：吉他手\n"+
-                "http://blog.xuite.net/ray00000test/blog" ,
+        	"程式設計：Hotz\n",
                 "作者",JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -195,10 +194,9 @@ public class JAddressBook extends JAddressBookUI
                 "3.刪除功能：刪除所選譯數筆資料\n" +
                 "4.查詢功能：依提示輸入資料，就搜尋並跳到該筆資料列\n" +
                 "5.儲存功能：儲存目前顯示的通訊錄資料\n" +
-                "6.匯入(出)功能：匯入(出)通訊錄所有資料並存檔為txt\n" +
-                "7.姓名可重複，建議不要輸入重複姓名\n" + 
-		"8.帳密功能，可修改帳密\n" + 
-                "9.v1.1" ,
+                "6.匯入(出)功能：匯入(出)所有工單資料並存檔為txt\n" +
+                "7.帳密功能，可修改帳密\n" + 
+                "8.v1.1(2017/12/19)" ,
                 "關於本程式",JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -249,8 +247,8 @@ public class JAddressBook extends JAddressBookUI
         else 
         {
             int msg = JOptionPane.showConfirmDialog(
-                    null, "通訊錄已修改，是否儲存?",
-                    "儲存通訊錄?", JOptionPane.YES_NO_OPTION, 
+                    null, "工單清冊已修改，是否儲存?",
+                    "儲存工單清冊?", JOptionPane.YES_NO_OPTION, 
                     JOptionPane.WARNING_MESSAGE, null);
 
             switch(msg) {

@@ -40,6 +40,7 @@ public class JPassword extends JPasswordUI
 		
 		if(id.equals(txtID) && pw.equals(txtPW) )
 		{
+			JAddressBookUI.setuserID(txtID);
 			new JAddressBook();
 			this.setVisible(false);
 			return;
